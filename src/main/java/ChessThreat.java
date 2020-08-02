@@ -10,11 +10,11 @@ public class ChessThreat {
 
         // Setup-Parameter
 
-        int xSize = 8;
-        int ySize = 8;
+        int xSize = 3;
+        int ySize = 3;
 
-        TYPE whitePieceType = TYPE.KNIGHT;
-        TYPE blackPieceType = TYPE.KNIGHT;
+        TYPE whitePieceType = TYPE.QUEEN;
+        TYPE blackPieceType = TYPE.BISHOP;
 
         Board.setBoard(xSize, ySize);
 
@@ -24,10 +24,10 @@ public class ChessThreat {
         long time = System.currentTimeMillis();
 
         // Option 1: check all combinations and keep valid moves
-        possibleScenarios = new TryAndErrorGenerator().run(whitePieceType, blackPieceType);
+        // possibleScenarios = new TryAndErrorGenerator().run(whitePieceType, blackPieceType);
 
         // Option 2: set piece on every possible position on the board, check only valid moves
-        // possibleScenarios = new LogicalGenerator().run(whitePieceType, blackPieceType);
+         possibleScenarios = new LogicalGenerator().run(whitePieceType, blackPieceType);
 
         time = System.currentTimeMillis() - time;
 

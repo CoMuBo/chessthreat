@@ -3,7 +3,7 @@ package piece;
 import misc.Position;
 
 public enum TYPE {
-    KNIGHT, ROOK, BISHOP;
+    KNIGHT, ROOK, BISHOP, QUEEN;
 
     /**
      * method to fetch a new instance of the current piece-type
@@ -19,6 +19,8 @@ public enum TYPE {
                 return new Rook(position);
             case BISHOP:
                 return new Bishop(position);
+            case QUEEN:
+                return new Queen(position);
             default:
                 return null;
         }
