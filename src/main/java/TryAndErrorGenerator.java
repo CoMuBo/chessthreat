@@ -35,18 +35,22 @@ public class TryAndErrorGenerator {
                 }
                 // get two new instances by the given types
                 Piece whitePiece = whitePieceType.getNewInstance(positionWhite);
-                Piece blackPiece = whitePieceType.getNewInstance(positionBlack);
+                Piece blackPiece = blackPieceType.getNewInstance(positionBlack);
+
 
                 // check if both moves (white->black and black->white) are allowed
-                if (whitePiece.isMoveAllowed(blackPiece)
-                        && blackPiece.isMoveAllowed(whitePiece)) {
-
-                    // put positions in a scenario and add it to the result
-                    Scenario scenario = new Scenario();
-                    scenario.addPiece(COLOR.WHITE, whitePiece);
-                    scenario.addPiece(COLOR.BLACK, blackPiece);
-                    resultList.add(scenario);
+                if (! whitePiece.isMoveAllowed(blackPiece)){
+                    continue;
                 }
+                if (!blackPiece.isMoveAllowed(whitePiece)) {
+                    continue;
+                }
+                // put positions in a scenario and add it to the result
+                Scenario scenario = new Scenario();
+                scenario.addPiece(COLOR.WHITE, whitePiece);
+                scenario.addPiece(COLOR.BLACK, blackPiece);
+                resultList.add(scenario);
+
             }
         }
         return resultList;
